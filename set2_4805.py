@@ -1,6 +1,7 @@
 from matplotlib.colors import ListedColormap
 import numpy as np
 import pandas as pd
+import os
 from sklearn.cluster import AgglomerativeClustering, KMeans
 from scipy.stats import mode
 from sklearn.decomposition import PCA
@@ -8,8 +9,9 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.layers import Input, Dense
 from tensorflow.keras.models import Model
 
-
-train_df = pd.read_csv('train.csv')
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+train_path = os.path.join(BASE_DIR, "train.csv")
+train_df = pd.read_csv(train_path)
 
 X_train = train_df.iloc[:, :20].values
 Y_train = train_df.iloc[:, -1].values
